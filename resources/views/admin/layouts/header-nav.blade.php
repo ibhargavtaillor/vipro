@@ -5,7 +5,7 @@
             <ul class="navigation-menu">
                 <li>
                     <div class="logo-box">
-                        <a href="index.php" class="logo text-center">
+                        <a href="{{route('dashboard')}}" class="logo text-center">
                             <span class="logo-lg">
                                 <img src="{{url('public/admin/images/logo-white.png')}}" alt="" height="18">
                                 <!-- <span class="logo-lg-text-light">UBold</span> -->
@@ -28,11 +28,11 @@
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Welcome !</h6>
                         </div>
-                        <a href="settings.php" class="dropdown-item notify-item text-dark">
+                        <a href="{{route('settings')}}" class="dropdown-item notify-item text-dark">
                             <i class="fe-user"></i>
                             <span>Settings</span>
                         </a>
-                        <a href="items-details.php" class="dropdown-item notify-item text-dark">
+                        <a href="{{route("items")}}" class="dropdown-item notify-item text-dark">
                             <i class="fe-settings"></i>
                             <span>Items Master</span>
                         </a>
@@ -49,19 +49,19 @@
                 </li>
 
                 <li class="float-right">
-                    <a href="index.php" class="mr-0">
+                    <a href="{{route('adminlogin')}}" class="mr-0">
                         <i class="fas fa-sign-out-alt "></i> Logout
                     </a>
                 </li>
 
                 <li class="float-right">
-                    <a href="add-invoice.php" class="mr-0">
+                    <a href="{{route('invoice.create')}}" class="mr-0">
                         <i class=" fas fa-file-medical"></i> Add New Invoice 
                     </a>
                 </li>
 
                 <li class="float-right">
-                    <a href="dashboard.php" class="mr-0">
+                    <a href="{{route('dashboard')}}" class="mr-0">
                         <i class="fas fa-file-invoice"></i> Invoice Lists
                     </a>
                 </li>

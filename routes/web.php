@@ -24,4 +24,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest'], function () {
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'guest'], function () {
     // Authentication Routes
     Route::get('dashboard', 'DashboardController@dashboard')->name('dashboard');
+
+    //Settings Route
+    Route::get('settings', 'SettingController@setting')->name('settings');
+
+    //Items Route
+    Route::get('items', 'ItemController@index')->name('items');
+
+    Route::resource('invoice', 'InvoiceController');
 });
