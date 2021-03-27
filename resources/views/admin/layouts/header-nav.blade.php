@@ -41,7 +41,7 @@
                             <span>Client Master</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="index.php" class="dropdown-item notify-item text-dark">
+                        <a href="{{route("logout")}}" class="dropdown-item notify-item text-dark">
                             <i class="fe-log-out"></i>
                             <span>Logout</span>
                         </a>

@@ -15,6 +15,9 @@ class LoginController extends Controller
      */
     public function loginForm()
     {
+        if (auth()->guard('admin')->check()) {
+            return redirect("admin/dashboard");
+        }
         return view("admin.auth.login");
     }
 
@@ -29,6 +32,14 @@ class LoginController extends Controller
         } else {
             return redirect('/admin/login')->withErrors("Invalid email or password");
         }
+    }
 
+    /**
+     * logout
+     */
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect("admin/login");
     }
 }
