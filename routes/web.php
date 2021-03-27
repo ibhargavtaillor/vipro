@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest'], function () {
     Route::post('signin', 'Auth\LoginController@login')->name('signIn');
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'guest'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
     // Authentication Routes
     Route::get('dashboard', 'DashboardController@dashboard')->name('dashboard');
 

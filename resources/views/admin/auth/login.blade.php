@@ -17,18 +17,19 @@
                 <div class="col-md-8 col-lg-6 col-xl-5">
                     <div class="card">
                         <div class="card-body p-4">
-                            <div class="text-center m-auto">
+                            <div class="text-center mb-2">
                                 <a href="index.php">
                                     <span>
                                         <img src="{{url('public/admin/images/logo-dark.png')}}" alt="" height="40">
                                     </span>
                                 </a>
                             </div>
-                            <form action="{{route("signIn")}}" method="POST">
+                            @include('reusable-view.flash')
+                            <form action="{{route("signIn")}}" method="POST" autocomplete="off">
                                 {{ csrf_field() }}
                                 <div class="form-group mb-3">
                                     <label for="emailaddress">User Name</label>
-                                    <input class="form-control" type="email" id="emailaddress"
+                                    <input class="form-control" type="email" name="email" id="emailaddress"
                                         placeholder="Email, ID number or phone">
                                 </div>
 
@@ -38,7 +39,7 @@
                                         data-plugin="tippy" data-tippy-placement="top" data-tippy-arrow="true"
                                         data-tippy-arrowType="round" data-tippy-animation="fade"
                                         data-tippy-theme="light"></i>
-                                    <input class="form-control" type="password" id="password"
+                                    <input name="password" class="form-control" type="password" id="password"
                                         placeholder="Enter your password">
                                 </div>
                                 <div class="form-group mb-0 text-center">

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    protected $guard = "admin";
+
     /**
      * @description This function is used to login form
      */
@@ -17,8 +21,14 @@ class LoginController extends Controller
     /**
      * @description this function is used to verify user
      */
-    public function login()
+    public function login(Request $request)
     {
-        return redirect(route('dashboard'));
+        $attempt = ['email' => $request->input('email'), "password" => $request->input('password')];
+        if (Auth::guard($this->guard)->attempt($attempt)) {
+            return redirect(route('dashboard'));
+        } else {
+            return redirect('/admin/login')->withErrors("Invalid email or password");
+        }
+
     }
 }
