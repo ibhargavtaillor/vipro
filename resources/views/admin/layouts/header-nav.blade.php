@@ -36,7 +36,7 @@
                             <i class="fe-settings"></i>
                             <span>Items Master</span>
                         </a>
-                        <a href="clients-details.php" class="dropdown-item notify-item text-dark">
+                        <a href="{{url('admin/client/')}}" class="dropdown-item notify-item text-dark">
                             <i class="fe-settings"></i>
                             <span>Client Master</span>
                         </a>
