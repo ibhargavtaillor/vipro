@@ -18,26 +18,24 @@
 </div>
 <div class="row">
     <div class="col-md-5">
+        {!! Form::model($model, ["id"=>"clientForm"]) !!}
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Clients Details</h4>
                 <hr />
                 <div class="form-group mb-3">
-                    <label for="simpleinput">Client Name</label>
-                    <input type="text" id="simpleinput" class="form-control" value="Siddhi Vinayak Printers"
-                        placeholder="Client  name goes here">
+                    <label for="vClientName">Client Name</label>
+                        {!! Form::text("vClientName", null, ["class"=>"form-control",'placeholder'=>'Client name goes here']) !!}
                 </div>
                 <div class="form-group mb-3">
-                    <label for="simpleinput">Client Address</label>
-                    <textarea class="form-control" id="example-textarea" placeholder="Client  address goes here"
-                        rows="3"></textarea>
+                    <label for="txAddress">Client Address</label>
+                    {!! Form::textarea("txAddress", null, ["class"=>"form-control",'placeholder'=>'Client name goes here', 'id'=>"example-textarea",'rows'=>'3']) !!}
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group mb-3">
-                            <label for="simpleinput">Client GST No.</label>
-                            <input type="text" id="simpleinput" class="form-control" value="24AAAADFTGD2016A62"
-                                placeholder="Client  GST">
+                            <label for="vGST">Client GST No.</label>
+                            {!! Form::text("vGST", null, ["class"=>"form-control",'placeholder'=>'Client GST']) !!} 
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -46,6 +44,7 @@
                 </div>
             </div>
         </div>
+        {!! Form::close() !!}
     </div>
     <div class="col-md-7">
         <div class="card">

@@ -49,7 +49,7 @@
                 </li>
 
                 <li class="float-right">
-                    <a href="{{route('adminlogin')}}" class="mr-0">
+                    <a href="{{route("logout")}}" class="mr-0">
                         <i class="fas fa-sign-out-alt "></i> Logout
                     </a>
                 </li>
