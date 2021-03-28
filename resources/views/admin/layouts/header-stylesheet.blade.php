@@ -16,3 +16,4 @@
 <link href="{{url('public/admin/css/bootstrap.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{url('public/admin/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{url('public/admin/css/app.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{url('public/admin/css/custom.css')}}" rel="stylesheet" type="text/css" />

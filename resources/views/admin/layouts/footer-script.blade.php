@@ -20,6 +20,8 @@
 <script src="{{url('public/admin/libs/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
 <!-- <script src="assets/js/pages/dashboard-1.init.js"></script> -->
 <script src="{{url('public/admin/js/pages/form-pickers.init.js')}}"></script>
-<script src="{{url('public/admin/js/pages/form-advanced.init.js')}}"></script>
 <!-- App js -->
 <script src="{{url('public/admin/js/app.min.js')}}"></script>
+<script>
+    var baseUrl = "{{url('/')}}";
+</script>

@@ -6,7 +6,7 @@
 <link href="{{url('public/admin/libs/datatables/responsive.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{url('public/admin/libs/datatables/buttons.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{url('public/admin/libs/datatables/select.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
-    
+
 @endsection
 @section('content')
 <div class="row">
@@ -26,7 +26,7 @@
                 @include('reusable-view.flash')
                 <div class="form-group mb-3">
                     <label for="vClientName">Client Name</label>
-                        {!! Form::text("vClientName", null, ["class"=>"form-control",'placeholder'=>'Client name goes here']) !!}
+                    {!! Form::text("vClientName", null, ["class"=>"form-control",'placeholder'=>'Client name goes here']) !!}
                 </div>
                 <div class="form-group mb-3">
                     <label for="txAddress">Client Address</label>
@@ -36,7 +36,7 @@
                     <div class="col-md-12">
                         <div class="form-group mb-3">
                             <label for="vGST">Client GST No.</label>
-                            {!! Form::text("vGST", null, ["class"=>"form-control",'placeholder'=>'Client GST']) !!} 
+                            {!! Form::text("vGST", null, ["class"=>"form-control",'placeholder'=>'Client GST']) !!}
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -52,7 +52,8 @@
             <div class="card-body">
                 <h4 class="header-title">Client Lists</h4>
                 <hr />
-                <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+                <table class="datatable mdl-data-table dataTable table table-bordered table-striped" cellspacing="0"
+                    width="100%" role="grid" style="width: 100%;" id='datatable'>
                     <thead>
                         <tr>
                             <th>#</th>
@@ -64,16 +65,11 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Siddhi Vinayak Printers</td>
-                            <td>Client Address Goes Here</td>
-                            <td>GSTNO1251252</td>
-                            <td>
-                                <a title="Edit" href="#" class="btn btn-info btn-xs waves-effect waves-light"> <i
-                                        class="fas fa-edit"></i> </a>
-                                <a title="Delete" href="#" class="btn btn-danger btn-xs waves-effect waves-light"> <i
-                                        class="fas fa-trash"></i> </a>
-                            </td>
+                            <th>#</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </tbody>
                 </table>
@@ -96,11 +92,7 @@
 <script src="{{url("public/admin/libs/datatables/dataTables.select.min.js")}}"></script>
 <script src="{{url("public/admin/libs/pdfmake/pdfmake.min.js")}}"></script>
 <script src="{{url("public/admin/libs/pdfmake/vfs_fonts.js")}}"></script>
-<!-- third party js ends -->
-
-<!-- Datatables init -->
-<script src="{{url("public/admin/js/pages/datatables.init.js")}}"></script>
-
 <!-- Init js-->
-<script src="{{url("public/admin/js/pages/form-advanced.init.js")}}"></script>
+<script src="{{url("public/admin/js/jquery.validate.js")}}"></script>
+<script src="{{url("public/admin/js/custom/client.js")}}"></script>
 @endsection

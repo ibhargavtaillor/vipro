@@ -25,7 +25,7 @@
                                 </a>
                             </div>
                             @include('reusable-view.flash')
-                            <form action="{{route("signIn")}}" method="POST" autocomplete="off">
+                            <form action="{{route("signIn")}}" method="POST" id="login-form" autocomplete="off">
                                 {{ csrf_field() }}
                                 <div class="form-group mb-3">
                                     <label for="emailaddress">User Name</label>
@@ -56,5 +56,30 @@
         2021 &copy; <a href="{{url('/')}}" class="text-white-50">ViproPrintPack</a>. All rights reserved.
     </footer>
     @include('admin.layouts.footer-script')
+    <script src="{{url("public/admin/js/jquery.validate.js")}}"></script>
+    <script>
+        $("#login-form").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true,
+                },
+                password: {
+                    required: true,
+                }
+            },
+            messages: {
+                email: {
+                    required: "Please enter a Email",
+                    email: "Please enter a valida Email",
+                },
+                password: {
+                    required: "Please enter Password",
+                }
+            }
+        });
+
+    </script>
 </body>
+
 </html>

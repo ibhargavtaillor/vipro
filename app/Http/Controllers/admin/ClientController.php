@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 class ClientController extends Controller
 {
@@ -36,6 +37,25 @@ class ClientController extends Controller
             }
         } else {
             return redirect('admin/client')->withErrors("GST number is already exist");
+        }
+    }
+
+    /**
+     * Get client list
+     */
+    public function getClientList(Request $request)
+    {
+        #code to check whether request is ajax or not
+        if ($request->ajax()) {
+            return Datatables::of(Client::query()->orderBy('iClientMasterId','desc'))
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    return "";
+                })
+                ->rawColumns(['action', 'enStatus'])
+                ->make(true);
+        } else {
+            return abort(404);
         }
     }
 }

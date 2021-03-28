@@ -43,6 +43,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
      */
     Route::group(['prefix' => 'client'], function () {
         Route::resource('/', 'ClientController');
+
+        Route::any('get-clients', 'ClientController@getClientList')->name('getClientList');
     });
 
 });
