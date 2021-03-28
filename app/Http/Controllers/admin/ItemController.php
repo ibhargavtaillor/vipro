@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Items;
 
 class ItemController extends Controller
 {
@@ -12,6 +13,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view("admin.item.index");
+        $_data = array(
+            'model' => new Items,
+        );
+        return view("admin.item.index", $_data);
     }
 }

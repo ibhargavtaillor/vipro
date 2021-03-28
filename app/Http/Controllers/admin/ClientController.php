@@ -16,6 +16,8 @@ class ClientController extends Controller
     {
         $_data = array(
             "model" => new Client,
+            "formUrl" => 'client.store',
+            'method' => 'POST',
         );
         return view("admin.client.index", $_data);
     }
@@ -41,16 +43,53 @@ class ClientController extends Controller
     }
 
     /**
+     * update information
+     */
+    public function edit(Request $request, Client $client)
+    {
+        if (!empty($client)) {
+            $_data = array(
+                "model" => $client,
+                "formUrl" => array('client.update', ['client' => $client->iClientMasterId]),
+                "method" => "patch",
+            );
+            return view("admin.client.index", $_data);
+        } else {
+            return redirect('admin/client/');
+        }
+    }
+
+    /**
+     * update information
+     */
+    public function update(Request $request, Client $client)
+    {
+        $data = $request->only('vClientName','txAddress','vGST');
+        $client->fill($data);
+        if($client->save()) {
+            session()->flash('success','Information has been updates successfully');
+            return redirect('admin/client');
+        } else {
+            return redirect('admin/client')->withErrors("Something went wronf failed to update client information");
+        }
+    }
+    /**
      * Get client list
      */
     public function getClientList(Request $request)
     {
         #code to check whether request is ajax or not
         if ($request->ajax()) {
-            return Datatables::of(Client::query()->orderBy('iClientMasterId','desc'))
+            return Datatables::of(Client::query()->orderBy('iClientMasterId', 'desc'))
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    return "";
+                    $html = "";
+
+                    $editUrl = route('client.edit', ['client' => $row->iClientMasterId]);
+
+                    $html .= "<a href='" . $editUrl . "' ><button data-id='" . $row->iClientMasterId . "' class='btn  btn-info btn-xs waves-effect waves-light' ><i class='fas fa-edit' ></i></button></a>";
+
+                    return $html;
                 })
                 ->rawColumns(['action', 'enStatus'])
                 ->make(true);

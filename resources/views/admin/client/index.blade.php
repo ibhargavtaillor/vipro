@@ -18,7 +18,7 @@
 </div>
 <div class="row">
     <div class="col-md-5">
-        {!! Form::model($model, ["id"=>"clientForm"]) !!}
+        {!! Form::model($model, ["id"=>"clientForm",'route'=>$formUrl,'method'=>$method]) !!}
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Clients Details</h4>

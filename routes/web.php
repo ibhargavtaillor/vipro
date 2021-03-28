@@ -36,13 +36,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     //Items Route
     Route::get('items', 'ItemController@index')->name('items');
 
+    #Invoice Route recource function include show, index, destroy, store and edit method
     Route::resource('invoice', 'InvoiceController');
 
+    #client Route recource function include show, index, destroy, store and edit method
+    Route::resource('client', 'ClientController');
     /**
      * Route group for the client module
      */
     Route::group(['prefix' => 'client'], function () {
-        Route::resource('/', 'ClientController');
 
         Route::any('get-clients', 'ClientController@getClientList')->name('getClientList');
     });
