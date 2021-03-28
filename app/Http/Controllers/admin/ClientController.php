@@ -16,7 +16,6 @@ class ClientController extends Controller
         $_data = array(
             "model" => new Client,
         );
-
         return view("admin.client.index", $_data);
     }
 
@@ -25,6 +24,18 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = $request->only(['vClientName', 'txAddress', 'vGST']);
+        if (Client::isGstAlreatExist($data['vGST'])) {
+            $model = new Client;
+            $model->fill($data);
+            if ($model->save()) {
+                session()->flash('success', "Client has been saved successfully");
+                return redirect('admin/client');
+            } else {
+                return redirect("admin/client")->withErrors("Something went wrong failed to save client information");
+            }
+        } else {
+            return redirect('admin/client')->withErrors("GST number is already exist");
+        }
     }
 }

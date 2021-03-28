@@ -10,6 +10,8 @@ class Client extends Model
 
     protected $primaryKey = 'iClientMasterId';
 
+    protected $dateFormat = 'U';
+
     /**
      * The name of the "created at" column.
      *
@@ -41,4 +43,19 @@ class Client extends Model
         "iCreatedAt",
         "iDeletedAt ",
     ];
+
+    /**
+     * @param String $vGST Gst number
+     *
+     * Check GST number is already exist or not
+     */
+    public static function isGstAlreatExist($vGST)
+    {
+        $isExist = self::where(['vGST' => $vGST])->first();
+        if (empty($isExist)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

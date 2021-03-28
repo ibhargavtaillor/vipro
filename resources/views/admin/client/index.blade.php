@@ -23,6 +23,7 @@
             <div class="card-body">
                 <h4 class="header-title">Clients Details</h4>
                 <hr />
+                @include('reusable-view.flash')
                 <div class="form-group mb-3">
                     <label for="vClientName">Client Name</label>
                         {!! Form::text("vClientName", null, ["class"=>"form-control",'placeholder'=>'Client name goes here']) !!}
@@ -39,7 +40,7 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <a href="#" class="btn btn-sm btn-dark"> Save </a>
+                        <button type="submit" class="btn btn-sm btn-dark"> Save </button>
                     </div>
                 </div>
             </div>
