@@ -17,36 +17,46 @@ use PHPUnit\Runner\Filter\IncludeGroupFilterIterator;
 Route::get('/', "HomeController@index")->name("index");
 
 Route::group(['prefix' => 'admin', 'middleware' => 'guest'], function () {
-    // Authentication Routes
+    #Authentication Routes
     Route::get('login', 'Auth\LoginController@loginForm')->name('adminlogin');
     Route::post('signin', 'Auth\LoginController@login')->name('signIn');
 
-    // logout
+    #logout
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
 
-    // Authentication Routes
+    #Authentication Routes
     Route::get('dashboard', 'DashboardController@dashboard')->name('dashboard');
 
-    //Settings Route
+    #Settings Route
     Route::get('settings', 'SettingController@setting')->name('settings');
 
-    //Items Route
+    #Items Route
     Route::get('items', 'ItemController@index')->name('items');
 
     #Invoice Route recource function include show, index, destroy, store and edit method
     Route::resource('invoice', 'InvoiceController');
 
-    #client Route recource function include show, index, destroy, store and edit method
+    #Client Route recource function include show, index, destroy, store and edit method
     Route::resource('client', 'ClientController');
+
     /**
      * Route group for the client module
      */
     Route::group(['prefix' => 'client'], function () {
-
         Route::any('get-clients', 'ClientController@getClientList')->name('getClientList');
     });
 
+    #Item route recource function include show, index, destroy, store and edit method
+    Route::resource('item', 'ItemController');
+
+    /**
+     * Route group for the items module
+     */
+    Route::group(['prefix' => 'item'], function () {
+        Route::any('get-items', 'ItemController@getItemList')->name('getItemList');
+    });
+    
 });

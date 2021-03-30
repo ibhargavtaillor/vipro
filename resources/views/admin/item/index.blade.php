@@ -15,35 +15,37 @@
 </div>     
 <div class="row">
     <div class="col-md-5">
+        {!! Form::model($model, ["id"=>"itemForm",'route'=>$formUrl,'method'=>$method]) !!}
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Items Details</h4>
                 <hr />
+                @include('reusable-view.flash')
                 <div class="form-group mb-3">
-                    <label for="simpleinput">Items Name</label>
-                    <input type="text" id="simpleinput" class="form-control" value="250 Gram Sweet Box" placeholder="Items  name goes here">
+                    <label for="vTitle">Items Name</label>
+                    {!! Form::text("vTitle", null, ["class"=>"form-control",'placeholder'=>'Items name goes here']) !!}
                 </div>
-                
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group mb-3">
-                            <label for="simpleinput">Item Rate</label>
-                            <input type="text" id="simpleinput" class="form-control" value="1.25" placeholder="Client  GST">
+                            <label for="dcPrice">Item Rate</label>
+                            {!! Form::text("dcPrice", null, ["class"=>"form-control",'placeholder'=>'Client GST']) !!}
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <a href="#" class="btn btn-sm btn-dark"> Save </a>
+                        <button type="submit" class="btn btn-sm btn-dark"> Save </button>
                     </div>
                 </div>
             </div> 
-        </div> 
+        </div>
+        {!! Form::close() !!} 
     </div>
     <div class="col-md-7">
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Items  Lists</h4>
                 <hr />
-                <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+                <table id="item-datatable" class="table w-100 nowrap">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -54,31 +56,10 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>250 Gram Sweet Box</td>
-                            <td>1.25</td>
-                            <td>
-                                <a title="Edit" href="#" class="btn btn-info btn-xs waves-effect waves-light"> <i class="fas fa-edit"></i> </a>
-                                <a title="Delete" href="#" class="btn btn-danger btn-xs waves-effect waves-light"> <i class="fas fa-trash"></i> </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>500 Gram Sweet Box</td>
-                            <td>1.50</td>
-                            <td>
-                                <a title="Edit" href="#" class="btn btn-info btn-xs waves-effect waves-light"> <i class="fas fa-edit"></i> </a>
-                                <a title="Delete" href="#" class="btn btn-danger btn-xs waves-effect waves-light"> <i class="fas fa-trash"></i> </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1KG Gram Sweet Box</td>
-                            <td>1.75</td>
-                            <td>
-                                <a title="Edit" href="#" class="btn btn-info btn-xs waves-effect waves-light"> <i class="fas fa-edit"></i> </a>
-                                <a title="Delete" href="#" class="btn btn-danger btn-xs waves-effect waves-light"> <i class="fas fa-trash"></i> </a>
-                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -102,4 +83,8 @@
     <script src="{{url('public/admin/libs/pdfmake/pdfmake.min.js')}}"></script>
     <script src="{{url('public/admin/libs/pdfmake/vfs_fonts.js')}}"></script>
     <script src="{{url('public/admin/js/pages/datatables.init.js')}}"></script>
+
+    {{-- Custom Javascript --}}
+    <script src="{{url("public/admin/js/jquery.validate.js")}}"></script>
+    <script src="{{url('public/admin/js/custom/item.js')}}"></script>
 @endsection

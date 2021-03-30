@@ -73,6 +73,7 @@ class ClientController extends Controller
             return redirect('admin/client')->withErrors("Something went wronf failed to update client information");
         }
     }
+    
     /**
      * Get client list
      */

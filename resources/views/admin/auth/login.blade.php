@@ -70,11 +70,11 @@
             },
             messages: {
                 email: {
-                    required: "Please enter a Email",
-                    email: "Please enter a valida Email",
+                    required: "Please enter a email",
+                    email: "Please enter a valid email",
                 },
                 password: {
-                    required: "Please enter Password",
+                    required: "Please enter password",
                 }
             }
         });
