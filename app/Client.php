@@ -41,7 +41,7 @@ class Client extends Model
         "tiIsActive",
         "iUpdatedAt",
         "iCreatedAt",
-        "iDeletedAt ",
+        "iDeletedAt",
     ];
 
     /**

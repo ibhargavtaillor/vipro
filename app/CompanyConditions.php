@@ -3,12 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Company extends Model
+class CompanyConditions extends Model
 {
-    protected $table = "company_master";
+    use SoftDeletes;
 
-    protected $primaryKey = 'iCompanyMasterId';
+    protected $table = "company_conditions";
+
+    protected $primaryKey = 'iCompanyContidionId';
 
     protected $dateFormat = 'U';
 
@@ -34,13 +37,9 @@ class Company extends Model
     const DELETED_AT = 'iDeletedAt';
 
     protected $fillable = [
+        "iCompanyContidionId",
         "iCompanyMasterId",
-        "iAdminId",
-        "vCompanyName",
-        "txAddress",
-        "vCompanyGstNumber",
-        "iSgst",
-        "iCgst",
+        "txCondition",
         "tiIsActive",
         "iUpdatedAt",
         "iCreatedAt",

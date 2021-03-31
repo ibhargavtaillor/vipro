@@ -56,3 +56,45 @@ $(".edit-company-terms").on("click", function () {
     $("#company-terms-form").find("#vTitle").val(vTitle);
     $("#company-terms-form").find("#iCompanyTermId").val(id);
 })
+
+
+$("#company-bank-form").validate({
+    rules: {
+        txBankInfo: {
+            required: true,
+        }
+    },
+    messages: {
+        txBankInfo: {
+            required: "Please enter a Company Bank Details",
+        }
+    }
+});
+
+$(".update-bankinfo").on("click", function () {
+    var id = $(this).data('id');
+    var bankInfo = $(this).data("bankinfo");
+    $("#company-bank-form").find("#iCompanyBankDetailId").val(id);
+    $("#company-bank-form").find("#txBankInfo").val(bankInfo);
+});
+
+
+$("#terms-condition-form").validate({
+    rules: {
+        txCondition: {
+            required: true,
+        }
+    },
+    messages: {
+        txCondition: {
+            required: "Please enter a Company Terms & Condition",
+        }
+    }
+});
+
+$(".update-condition").on("click", function () {
+    var id = $(this).data('id');
+    var condition = $(this).data("condition");
+    $("#terms-condition-form").find("#iCompanyContidionId").val(id);
+    $("#terms-condition-form").find("#txCondition").val(condition);
+});
