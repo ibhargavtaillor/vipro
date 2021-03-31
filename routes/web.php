@@ -32,6 +32,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
 
     #Settings Route
     Route::get('settings', 'SettingController@setting')->name('settings');
+    Route::post('settings/company', 'SettingController@updateCompanyInfo')->name('settings.company');
+    Route::post('settings/save-payment-terms', 'SettingController@saveCompanyPaymentTerms')->name('settings.company.payment-terms');
 
     #Items Route
     Route::get('items', 'ItemController@index')->name('items');
@@ -58,5 +60,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     Route::group(['prefix' => 'item'], function () {
         Route::any('get-items', 'ItemController@getItemList')->name('getItemList');
     });
-    
+
 });

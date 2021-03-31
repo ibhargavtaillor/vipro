@@ -23,6 +23,7 @@
     </div>
 
     @include('admin.layouts.footer')
+    @include('reusable-view.model')
     @include('admin.layouts.footer-script')
     @yield('js-section')
 </body>
