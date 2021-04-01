@@ -58,4 +58,13 @@ class Client extends Model
             return false;
         }
     }
+
+    /**
+     * Get all client list
+     * @return array
+     */
+    public static function getAll()
+    {
+        return self::where(['tiIsActive' => "1"])->get();
+    }
 }

@@ -45,4 +45,14 @@ class CompanyBankDetail extends Model
         "iCreatedAt",
         "iDeletedAt",
     ];
+
+    /**
+     * @return Object $banklist
+     *
+     * @description This function is used to get company bank information
+     */
+    public static function getAll()
+    {
+        return self::where(['tiIsActive' => "1"])->get();
+    }
 }

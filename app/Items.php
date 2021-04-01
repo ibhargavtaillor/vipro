@@ -43,4 +43,13 @@ class Items extends Model
         "iDeletedAt ",
     ];
 
+    /**
+     * @return array list of items
+     * @description this function is used to get all Item list
+     */
+    public static function getAll()
+    {
+        return self::where(['tiIsActive' => "1"])->get();
+    }
+
 }

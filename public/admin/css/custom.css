@@ -2,3 +2,15 @@
     color: #FF0000;
     margin: 0;
 }
+
+.item-dropdown .select2-selection {
+    height: calc(1.5em + 0.5rem + 2px) !important;
+}
+
+.item-dropdown .select2-selection .select2-selection__rendered {
+    line-height: 30px !important;
+}
+
+.item-dropdown .select2-selection .select2-selection__arrow {
+    height: 30px !important;
+}

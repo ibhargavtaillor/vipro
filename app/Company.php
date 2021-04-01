@@ -46,4 +46,14 @@ class Company extends Model
         "iCreatedAt",
         "iDeletedAt",
     ];
+
+    /**
+     * @return Object $company
+     *
+     * @description This function is used to get all company information
+     */
+    public static function info()
+    {
+        return self::where(['tiIsActive' => 1])->first();
+    }
 }
