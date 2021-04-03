@@ -19,7 +19,6 @@ $(".invoice-client").on("change", function () {
     });
 });
 
-
 $(document).on("change", ".select-invoice-item", function () {
     var iItemId = $(this).val();
     var currentDropdown = $(this);
@@ -56,8 +55,13 @@ $("#invoice-date").flatpickr({
 });
 
 $(document).on("click", ".remove-item", function () {
-    $(this).closest(".row").remove();
-    calculatePrices();
+    var totalItems = $("#item-list").find(".row").length;
+    if (totalItems > 1) {
+        $(this).closest(".row").remove();
+        calculatePrices();
+    } else {
+        alert("You can not delete this item. Invoice should have at least one Item");
+    }
 });
 
 
@@ -112,7 +116,7 @@ function calculatePrices() {
 
         var dRoundOff = $("#dRoundOff").val();
         dGrandTotal = parseFloat(dGrandTotal) - parseFloat(dRoundOff);
-        
+
         $("#dGrandTotal").val(dGrandTotal.toFixed(2));
 
     }
