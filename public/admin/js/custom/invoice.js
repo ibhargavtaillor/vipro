@@ -1,5 +1,9 @@
 $('[data-toggle="select2"]').select2();
 
+function replaceAll(string, search, replace) {
+    return string.split(search).join(replace);
+}
+
 $(".invoice-client").on("change", function () {
     var iClientId = $(this).val();
     $.ajax({
@@ -68,9 +72,20 @@ $(document).on("click", ".remove-item", function () {
 $(".add-item").on("click", function () {
     var totalItems = $("#item-list").find(".row").length;
     var itemTemplate = $("#item-template").html();
-    totalItems = totalItems + 1;
+
+    itemTemplate = replaceAll(itemTemplate, "invoiceItemSr", "invoiceItem[" + totalItems + "][sr]");
+    itemTemplate = replaceAll(itemTemplate, "invoiceItemTitle", "invoiceItem[" + totalItems + "][vItemTitle]");
+    itemTemplate = replaceAll(itemTemplate, "invoiceItemHsn", "invoiceItem[" + totalItems + "][vHSN]");
+    itemTemplate = replaceAll(itemTemplate, "invoiceItemQty", "invoiceItem[" + totalItems + "][iQty]");
+    itemTemplate = replaceAll(itemTemplate, "invoiceItemRate", "invoiceItem[" + totalItems + "][dRate]");
+    itemTemplate = replaceAll(itemTemplate, "invoiceItemAmount", "invoiceItem[" + totalItems + "][dAmount]");
+
     $("#item-list").append(itemTemplate);
 
+    $("[name='invoiceItem[" + totalItems + "][sr]']").val((totalItems + 1));
+    $("[name='invoiceItem[" + totalItems + "][vItemTitle]']").select2();
+
+    totalItems = totalItems + 1;
 });
 
 
