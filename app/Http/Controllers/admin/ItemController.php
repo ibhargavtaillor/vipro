@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Items;
 use Illuminate\Http\Request;
+use League\Fractal\Resource\Item;
 use Yajra\Datatables\Datatables;
 
 class ItemController extends Controller
@@ -43,7 +44,7 @@ class ItemController extends Controller
     {
         $data = $request->only(['vTitle', 'dcPrice']);
         $item->fill($data);
-        if($item->save()) {
+        if ($item->save()) {
             session()->flash('success', 'Item has been updated successfully');
             return redirect('admin/item');
         } else {
@@ -91,6 +92,28 @@ class ItemController extends Controller
                 ->make(true);
         } else {
             return abort(404);
+        }
+    }
+
+    /**
+     * This function is used to get item
+     */
+    public function getItemInfo(Request $request)
+    {
+        if ($request->ajax()) {
+            $item = Items::where(['iItemMasterId' => $request->input('iItemMasterId')])->first();
+            if ($item) {
+                $_data = array(
+                    'iItemMasterId' => $item->iItemMasterId,
+                    'vTitle' => $item->vTitle,
+                    'dcPrice' => $item->dcPrice,
+                );
+                return response(['code' => '1', 'message' => 'Item Price', 'data' => $_data]);
+            } else {
+                return response(['code' => '0', 'messsage' => 'item not found']);
+            }
+        } else {
+            abort(404);
         }
     }
 }

@@ -45,4 +45,14 @@ class CompanyPaymentTerms extends Model
         "iCreatedAt",
         "iDeletedAt",
     ];
+
+    /**
+     * @return object return
+     *
+     * @description This function is used to get all payment terms
+     */
+    public static function getAll()
+    {
+        return self::where(['tiIsActive' => "1"])->get();
+    }
 }

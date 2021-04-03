@@ -51,6 +51,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
      */
     Route::group(['prefix' => 'client'], function () {
         Route::any('get-clients', 'ClientController@getClientList')->name('getClientList');
+        Route::any('get-client', 'ClientController@getClient')->name('ajax.client');
     });
 
     #Item route recource function include show, index, destroy, store and edit method
@@ -61,6 +62,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
      */
     Route::group(['prefix' => 'item'], function () {
         Route::any('get-items', 'ItemController@getItemList')->name('getItemList');
+        Route::any('get-item', 'ItemController@getItemInfo')->name('ajax.item');
     });
 
 });

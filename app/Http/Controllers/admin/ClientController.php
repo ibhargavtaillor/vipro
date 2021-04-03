@@ -64,16 +64,16 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        $data = $request->only('vClientName','txAddress','vGST');
+        $data = $request->only('vClientName', 'txAddress', 'vGST');
         $client->fill($data);
-        if($client->save()) {
-            session()->flash('success','Information has been updates successfully');
+        if ($client->save()) {
+            session()->flash('success', 'Information has been updates successfully');
             return redirect('admin/client');
         } else {
             return redirect('admin/client')->withErrors("Something went wronf failed to update client information");
         }
     }
-    
+
     /**
      * Get client list
      */
@@ -94,6 +94,27 @@ class ClientController extends Controller
                 })
                 ->rawColumns(['action', 'enStatus'])
                 ->make(true);
+        } else {
+            return abort(404);
+        }
+    }
+
+    /**
+     * @param Request $request incoming request
+     *
+     * @description This function is used to get client info
+     */
+    public function getClient(Request $request)
+    {
+        if ($request->ajax()) {
+            $iClientId = $request->input('iClientId');
+            $client = Client::where(['iClientMasterId' => $iClientId])->first();
+            $data = array(
+                "vClientName" => $client->vClientName,
+                "txAddress" => $client->txAddress,
+                "vGST" => $client->vGST,
+            );
+            return response(['code' => '1', 'message' => 'data', 'data' => $data]);
         } else {
             return abort(404);
         }
