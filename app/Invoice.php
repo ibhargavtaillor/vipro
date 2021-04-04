@@ -57,7 +57,7 @@ class Invoice extends Model
         "dCGSTPerc",
         "dCGST",
         "dRoundOff",
-        "dGradTotal",
+        "dGrandTotal",
         "iTotalInvoicePrintedCount",
         "tiIsPaid",
         "tiIsActive",
@@ -65,6 +65,14 @@ class Invoice extends Model
         "iCreatedAt",
         "iDeletedAt",
     ];
+
+    /**
+     * Relation to Invoice Item model
+     */
+    public function items()
+    {
+        return $this->hasMany("App\InvoiceItem", "iInvoiceMasterId", "iInvoiceMasterId");
+    }
 
     /**
      * @return String invoice number
