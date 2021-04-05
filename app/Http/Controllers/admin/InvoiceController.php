@@ -87,10 +87,29 @@ class InvoiceController extends Controller
                         ));
                     }
                 }
+                return redirect(route('invoice.print',['vUrlKey'=>$newInvoiceModel->vUrlKey]));
             }
 
         } else {
             return redirect(route('invoice.create'))->withErrors("Please select Client");
+        }
+    }
+
+    /**
+     * @param Request $request incoming request
+     *
+     * @description This function is used to view invoice detail
+     */
+    public function invoiceDetail(Request $request, $vUrlKey)
+    {
+        if (isset($vUrlKey) && $vUrlKey != "") {
+            $invoice = Invoice::where(['vUrlKey' => $vUrlKey])->first();
+            $data = array(
+                "invoice" => $invoice,
+            );
+            return view("admin.invoice.print-invoice", $data);
+        } else {
+            return back();
         }
     }
 }

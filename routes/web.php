@@ -29,6 +29,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
 
     #Authentication Routes
     Route::get('dashboard', 'DashboardController@dashboard')->name('dashboard');
+    Route::any('dashboard/get-invoices', 'DashboardController@getInvoices')->name('dashboard.invoices');
 
     #Settings Route
     Route::get('settings', 'SettingController@setting')->name('settings');
@@ -42,6 +43,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
 
     #Invoice Route recource function include show, index, destroy, store and edit method
     Route::resource('invoice', 'InvoiceController');
+    Route::group(['prefix' => 'invoice'], function () {
+        Route::get('print/{vUrlKey}', 'InvoiceController@invoiceDetail')->name('invoice.print');
+    });
 
     #Client Route recource function include show, index, destroy, store and edit method
     Route::resource('client', 'ClientController');

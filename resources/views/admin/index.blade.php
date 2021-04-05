@@ -17,7 +17,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+                <table id="invoice-dashboard-list" class="table w-100 nowrap">
                     <thead>
                         <tr>
                             <th>Invoice No</th>
@@ -29,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        {{-- <tr>
                             <td>A101</td>
                             <td>Siddhi Vinayak Printers</td>
                             <td>01-Jan-2021</td>
@@ -45,58 +45,7 @@
                                 <a title="Edit" href="#" class="btn btn-info btn-xs waves-effect waves-light"> <i
                                         class="fas fa-edit"></i> </a>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>A101</td>
-                            <td>Siddhi Vinayak Printers</td>
-                            <td>01-Jan-2021</td>
-                            <td>25000.00</td>
-                            <td><span class="btn btn-success btn-xs"> Done </span></td>
-                            <td>
-                                <a title="View" href="print-invoice.php"
-                                    class="btn btn-warning btn-xs waves-effect waves-light"> <i class="fas fa-eye"></i>
-                                </a>
-                                <a title="Print" href="print-invoice.php"
-                                    class="btn btn-primary btn-xs waves-effect waves-light"> <i
-                                        class="fas fa-print"></i> </a>
-                                <a title="Edit" href="#" class="btn btn-info btn-xs waves-effect waves-light"> <i
-                                        class="fas fa-edit"></i> </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>A101</td>
-                            <td>Siddhi Vinayak Printers</td>
-                            <td>01-Jan-2021</td>
-                            <td>25000.00</td>
-                            <td><span class="btn btn-success btn-xs"> Done </span></td>
-                            <td>
-                                <a title="View" href="print-invoice.php"
-                                    class="btn btn-warning btn-xs waves-effect waves-light"> <i class="fas fa-eye"></i>
-                                </a>
-                                <a title="Print" href="print-invoice.php"
-                                    class="btn btn-primary btn-xs waves-effect waves-light"> <i
-                                        class="fas fa-print"></i> </a>
-                                <a title="Edit" href="#" class="btn btn-info btn-xs waves-effect waves-light"> <i
-                                        class="fas fa-edit"></i> </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>A101</td>
-                            <td>Siddhi Vinayak Printers</td>
-                            <td>01-Jan-2021</td>
-                            <td>25000.00</td>
-                            <td><span class="btn btn-success btn-xs"> Done </span></td>
-                            <td>
-                                <a title="View" href="print-invoice.php"
-                                    class="btn btn-warning btn-xs waves-effect waves-light"> <i class="fas fa-eye"></i>
-                                </a>
-                                <a title="Print" href="print-invoice.php"
-                                    class="btn btn-primary btn-xs waves-effect waves-light"> <i
-                                        class="fas fa-print"></i> </a>
-                                <a title="Edit" href="#" class="btn btn-info btn-xs waves-effect waves-light"> <i
-                                        class="fas fa-edit"></i> </a>
-                            </td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>
@@ -120,4 +69,6 @@
     <script src="{{url('public/admin/libs/pdfmake/pdfmake.min.js')}}"></script>
     <script src="{{url('public/admin/libs/pdfmake/vfs_fonts.js')}}"></script>
     <script src="{{url('public/admin/js/pages/datatables.init.js')}}"></script>
+
+    <script src="{{url('public/admin/js/custom/dashboard.js')}}" ></script>
 @endsection
