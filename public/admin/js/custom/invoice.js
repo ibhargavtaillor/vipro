@@ -50,6 +50,14 @@ $(document).on("input", ".item-qty", function () {
     calculateItemQtyTotalAmount($(this).closest(".row"));
 })
 
+$("#dCarting").on("input", function () {
+    calculatePrices();
+});
+
+$("#dRoundOff").on("input", function () {
+    calculatePrices();
+});
+
 /**
  * Initialize calder
  */
@@ -130,7 +138,7 @@ function calculatePrices() {
         var dGrandTotal = parseFloat(dTotal) + parseFloat(diSgst) + parseFloat(diCgst);
 
         var dRoundOff = $("#dRoundOff").val();
-        dGrandTotal = parseFloat(dGrandTotal) - parseFloat(dRoundOff);
+        dGrandTotal = parseFloat(dGrandTotal) + parseFloat(dRoundOff);
 
         $("#dGrandTotal").val(dGrandTotal.toFixed(2));
 
