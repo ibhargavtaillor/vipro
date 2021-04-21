@@ -44,7 +44,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label for="simpleinput">Invoice No.</label>
-                                        <input type="text" name="vInvoiceNumber" id="simpleinput" class="form-control bg-light" readonly value="{{$invoiceNumber}}">
+                                        <input type="text" name="vInvoiceNumber" id="simpleinput" class="form-control"  value="{{$invoiceNumber}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -193,8 +193,8 @@
                                         <select name="vPaymentTerms" class="form-control form-control-sm" id="example-select">
                                             <option value="" >Select Payment Terms</option>
                                             @if ($paymentTerms->count() > 0)
-                                                @foreach ($paymentTerms as $payTerm)
-                                                    <option value="{{$payTerm->iCompanyTermId}}" >{{$payTerm->vTitle}}</option>
+                                                @foreach ($paymentTerms as $key => $payTerm)
+                                                    <option {{($key == 0) ? "selected" : ""}} value="{{$payTerm->iCompanyTermId}}" >{{$payTerm->vTitle}}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -208,8 +208,8 @@
                                         <select name="txTermsAndCondition" class="form-control form-control-sm" id="company-condition">
                                             <option value="" >Select Condition</option>
                                             @if ($conditions->count() > 0)
-                                                @foreach ($conditions as $condition)
-                                                    <option value="{{$condition->iCompanyContidionId}}" >{{$condition->txCondition}}</option>
+                                                @foreach ($conditions as $key => $condition)
+                                                    <option {{($key == 0) ? "selected" : ""}} value="{{$condition->iCompanyContidionId}}" >{{$condition->txCondition}}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -223,8 +223,8 @@
                                         <select name="txBankDetail" class="form-control form-control-sm" id="comnapy-bank">
                                             <option selected >Select Bank</option>
                                             @if ($companyBank->count() > 0)
-                                                @foreach ($companyBank as $bank)
-                                                    <option value="{{$bank->iCompanyBankDetailId}}" >{{$bank->txBankInfo}}</option>
+                                                @foreach ($companyBank as $key =>  $bank)
+                                                    <option {{($key == 0) ? "selected" : ""}} value="{{$bank->iCompanyBankDetailId}}" >{{$bank->txBankInfo}}</option>
                                                 @endforeach
                                             @endif
                                         </select>

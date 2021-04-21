@@ -62,8 +62,10 @@ $("#dRoundOff").on("input", function () {
  * Initialize calder
  */
 $("#invoice-date").flatpickr({
-    minDate: new Date(),
-    defaultDate: new Date()
+    /*minDate: new Date(),*/
+    defaultDate: new Date(),
+    altFormat: 'd-m-Y',
+    altInput: true,
 });
 
 $(document).on("click", ".remove-item", function () {

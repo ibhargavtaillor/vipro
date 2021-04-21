@@ -37,6 +37,9 @@ class DashboardController extends Controller
                     }
                     return $html;
                 })
+                ->addColumn("dInvoiceDate", function ($row) {
+                    return date("d-m-Y", strtotime($row->dInvoiceDate));
+                })
                 ->addColumn('action', function ($row) {
                     $html = "";
                     $viewUrl = route('invoice.print', ['vUrlKey' => $row->vUrlKey]);

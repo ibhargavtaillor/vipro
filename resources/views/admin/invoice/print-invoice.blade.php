@@ -103,9 +103,24 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="clearfix pt-5">
+                    <div class="row" >
+                        <div class="col-md-9" >
+                            <div>
+                                <label>Payment Terams:</label>
+                                <span>{{$invoice->vPaymentTerms}}</span>
+                            </div>
+                            <div>
+                                <label>Bank Detail:</label>
+                                <span>{{$invoice->txBankDetail}}</span>
+                            </div>
+                            <div>
+                                <label>Terms & Condition:</label>
+                                <span>{{$invoice->txTermsAndCondition}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix ">
                         <h6 class="text-muted">Notes:</h6>
-
                         <small class="text-muted">
                             All accounts are to be paid within 7 days from receipt of
                             invoice. To be paid by cheque or credit card or direct payment
@@ -135,9 +150,7 @@
 
             <div class="mt-4 mb-1">
                 <div class="text-right d-print-none">
-                    <a href="javascript:window.print()" class="btn btn-primary waves-effect waves-light"><i
-                            class="mdi mdi-printer mr-1"></i> Print</a>
-                    <a href="#" class="btn btn-info waves-effect waves-light">Submit</a>
+                    <a href="javascript:window.print()" class="btn btn-primary waves-effect waves-light"><i class="mdi mdi-printer mr-1"></i> Print</a>
                 </div>
             </div>
         </div>
