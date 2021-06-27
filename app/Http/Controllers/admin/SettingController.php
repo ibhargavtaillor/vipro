@@ -44,7 +44,7 @@ class SettingController extends Controller
      */
     public function updateCompanyInfo(Request $request)
     {
-        $data = $request->only(['vCompanyName', 'txAddress', 'vCompanyGstNumber', 'iSgst', 'iCgst']);
+        $data = $request->only(['vCompanyName', 'txAddress', 'vCompanyGstNumber', 'iSgst', 'iCgst', 'iIgst']);
         $company = Company::where(['iAdminId' => Auth::guard('admin')->user()->id])->first();
         if (empty($company)) {
             $company = new Company;
@@ -76,7 +76,7 @@ class SettingController extends Controller
         if ($request->has('iCompanyTermId') && $request->input('iCompanyTermId') != "") {
             $model = CompanyPaymentTerms::where(['iCompanyTermId' => $request->input('iCompanyTermId')])->first();
         }
-        
+
         $model->fill($data);
 
         if ($model->save()) {

@@ -41,6 +41,7 @@ class Company extends Model
         "vCompanyGstNumber",
         "iSgst",
         "iCgst",
+        "iIgst",
         "tiIsActive",
         "iUpdatedAt",
         "iCreatedAt",

@@ -46,7 +46,13 @@
                             {!! Form::text("iCgst", null, ["class"=>"form-control",'placeholder'=>'Company CGST']) !!}
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
+                        <div class="form-group mb-3">
+                            <label for="iIgst">IGST(%)</label>
+                            {!! Form::text("iIgst", null, ["class"=>"form-control",'placeholder'=>'Company IGST']) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
                         <button type="submit" class="btn btn-sm btn-dark"> Save </button>
                     </div>
                 </div>

@@ -38,6 +38,7 @@ class Client extends Model
         "vClientName",
         "txAddress",
         "vGST",
+        "tiIsOutOfState",
         "tiIsActive",
         "iUpdatedAt",
         "iCreatedAt",

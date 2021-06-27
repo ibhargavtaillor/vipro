@@ -27,7 +27,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['vClientName', 'txAddress', 'vGST']);
+        $data = $request->only(['vClientName', 'txAddress', 'vGST', 'tiIsOutOfState']);
         if (Client::isGstAlreatExist($data['vGST'])) {
             $model = new Client;
             $model->fill($data);

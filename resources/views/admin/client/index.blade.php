@@ -24,21 +24,32 @@
                 <h4 class="header-title">Clients Details</h4>
                 <hr />
                 @include('reusable-view.flash')
-                <div class="form-group mb-3">
-                    <label for="vClientName">Client Name</label>
-                    {!! Form::text("vClientName", null, ["class"=>"form-control",'placeholder'=>'Client name goes here']) !!}
-                </div>
-                <div class="form-group mb-3">
-                    <label for="txAddress">Client Address</label>
-                    {!! Form::textarea("txAddress", null, ["class"=>"form-control",'placeholder'=>'Client name goes here', 'id'=>"example-textarea",'rows'=>'3']) !!}
-                </div>
-                <div class="row">
+                <div class="row" >
+                    <div class="col-md-12" >
+                        <div class="form-group mb-3">
+                            <label for="vClientName">Client Name</label>
+                            {!! Form::text("vClientName", null, ["class"=>"form-control",'placeholder'=>'Client name goes here']) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-12" >
+                        <div class="form-group mb-3">
+                            <label for="txAddress">Client Address</label>
+                            {!! Form::textarea("txAddress", null, ["class"=>"form-control",'placeholder'=>'Client name goes here', 'id'=>"example-textarea",'rows'=>'3']) !!}
+                        </div>
+                    </div>
                     <div class="col-md-12">
                         <div class="form-group mb-3">
                             <label for="vGST">Client GST No.</label>
                             {!! Form::text("vGST", null, ["class"=>"form-control",'placeholder'=>'Client GST']) !!}
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="form-group mb-3">
+                            <label for="vGST">Out of state client</label>
+                            {!! Form::select('tiIsOutOfState', array(''=>"Select",'0' => 'Local', '1' => 'Out of state'),null,["data-toggle"=>"select2","class"=>"form-control"]); !!}
+                        </div>
+                    </div>
+
                     <div class="col-md-3">
                         <button type="submit" class="btn btn-sm btn-dark"> Save </button>
                     </div>
