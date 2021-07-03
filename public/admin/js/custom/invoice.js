@@ -16,8 +16,17 @@ $(".invoice-client").on("change", function () {
         success: function (_response) {
             if (_response.code == "1") {
                 var _data = _response.data;
+                $("#tiIsOutOfState").val(_data.tiIsOutOfState);
                 $("#client-address").html(_data.txAddress);
                 $("#client-gst").html(_data.vGST);
+
+                if (_data.tiIsOutOfState == "1") {
+                    $("#igst-block").show();
+                    $("#gst-block").hide();
+                } else {
+                    $("#igst-block").hide();
+                    $("#gst-block").show();
+                }
             }
         }
     });
@@ -114,6 +123,7 @@ function calculateItemQtyTotalAmount(currentRow) {
  * Single function to calculate the prices
  */
 function calculatePrices() {
+    var tiIsOutOfState = $("#tiIsOutOfState").val();
     var items = $("#item-list").find(".row");
     var length = $("#item-list").find(".row").length;
     var grossTotal = 0;
@@ -132,12 +142,21 @@ function calculatePrices() {
         var dTotal = parseFloat(grossTotal) + parseFloat(dCarting);
         $("#dTotal").val(dTotal.toFixed(2));
 
-        var diSgst = ((dTotal * iSgst) / 100).toFixed(2);
-        var diCgst = ((dTotal * iCgst) / 100).toFixed(2);
-        $("#dSGST").val(diSgst);
-        $("#dCGST").val(diCgst);
+        var subTotal = 0
 
-        var dGrandTotal = parseFloat(dTotal) + parseFloat(diSgst) + parseFloat(diCgst);
+        if (tiIsOutOfState == "1") {
+            var igst = ((dTotal * iIgst) / 100).toFixed(2);
+            $("#dIGST").val(igst);
+            subTotal = igst;
+        } else {
+            var diSgst = ((dTotal * iSgst) / 100).toFixed(2);
+            var diCgst = ((dTotal * iCgst) / 100).toFixed(2);
+            $("#dSGST").val(diSgst);
+            $("#dCGST").val(diCgst);
+            subTotal = parseFloat(diSgst) + parseFloat(diCgst);
+        }
+
+        var dGrandTotal = parseFloat(dTotal) + parseFloat(subTotal);
 
         var dRoundOff = $("#dRoundOff").val();
         dGrandTotal = parseFloat(dGrandTotal) + parseFloat(dRoundOff);

@@ -67,6 +67,9 @@ class InvoiceController extends Controller
                 "dSGST" => $params['dSGST'],
                 "dCGSTPerc" => $company->iCgst,
                 "dCGST" => $params['dCGST'],
+                "dIGSTPerc"=>$company->iIgst,
+                "dIGST" => $params['dIGST'],
+                "tiIsOutOfState" => $params['tiIsOutOfState'],
                 "dRoundOff" => (isset($params['dRoundOff']) && $params['dRoundOff'] != "") ? $params['dRoundOff'] : "0",
                 "dGrandTotal" => $params['dGrandTotal'],
             );

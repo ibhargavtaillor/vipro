@@ -12,6 +12,7 @@
         <div class="card">
             <form action="{{route('invoice.store')}}" method="POST" >
                 {{ csrf_field() }}
+                <input type="hidden" name="tiIsOutOfState" value="0" id="tiIsOutOfState" />
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
@@ -263,23 +264,37 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <span class="btn btn-white btn-sm font-weight-bold"> SGST {{round($company->iSgst)}}% </span>
+                                <div id="gst-block" >
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <span class="btn btn-white btn-sm font-weight-bold"> SGST {{round($company->iSgst)}}% </span>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <div class="form-group mb-1">
+                                                <input type="text" id="dSGST" name="dSGST" class="form-control form-control-sm text-right font-weight-bold  bg-light" readonly placeholder="#" value="0.00">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 text-right">
-                                        <div class="form-group mb-1">
-                                            <input type="text" id="dSGST" name="dSGST" class="form-control form-control-sm text-right font-weight-bold  bg-light" readonly placeholder="#" value="0.00">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <span class="btn btn-white btn-sm font-weight-bold"> CGST {{ round($company->iCgst)}}% </span>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <div class="form-group mb-1">
+                                                <input id="dCGST" name="dCGST" type="text" class="form-control form-control-sm text-right font-weight-bold  bg-light" readonly placeholder="#" value="0.00">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <span class="btn btn-white btn-sm font-weight-bold"> CGST {{ round($company->iCgst)}}% </span>
-                                    </div>
-                                    <div class="col-md-6 text-right">
-                                        <div class="form-group mb-1">
-                                            <input id="dCGST" name="dCGST" type="text" class="form-control form-control-sm text-right font-weight-bold  bg-light" readonly placeholder="#" value="0.00">
+                                <div id="igst-block" style="display: none" >
+                                    <div class="row" >
+                                        <div class="col-md-6">
+                                            <span class="btn btn-white btn-sm font-weight-bold"> IGST {{ round($company->iIgst)}}% </span>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <div class="form-group mb-1">
+                                                <input id="dIGST" name="dIGST" type="text" class="form-control form-control-sm text-right font-weight-bold  bg-light" readonly placeholder="#" value="0.00">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -323,6 +338,7 @@
     
     var iSgst = parseFloat('{{$company->iSgst}}');
     var iCgst = parseFloat('{{$company->iCgst}}');
+    var iIgst = parseFloat('{{$company->iIgst}}');
 </script>
 <script src="{{url('public/admin/js/custom/invoice.js')}}"  ></script>
 @endsection

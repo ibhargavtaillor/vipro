@@ -64,7 +64,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        $data = $request->only('vClientName', 'txAddress', 'vGST');
+        $data = $request->only('vClientName', 'txAddress', 'vGST', 'tiIsOutOfState');
         $client->fill($data);
         if ($client->save()) {
             session()->flash('success', 'Information has been updates successfully');
@@ -113,6 +113,7 @@ class ClientController extends Controller
                 "vClientName" => $client->vClientName,
                 "txAddress" => $client->txAddress,
                 "vGST" => $client->vGST,
+                "tiIsOutOfState" => $client->tiIsOutOfState,
             );
             return response(['code' => '1', 'message' => 'data', 'data' => $data]);
         } else {
