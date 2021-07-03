@@ -135,8 +135,12 @@
                         <p class="mb-0"><b>Gross total:</b> <span class="float-right">{{number_format($invoice->dGrossTotal,2)}}/-</span></p>
                         <p class="mb-0"><b>Carting:</b> <span class="float-right">{{number_format($invoice->dCarting,2)}}/-</span></p>
                         <p class="mb-0"><b>Total:</b> <span class="float-right">{{number_format($invoice->dTotal,2)}}/-</span></p>
-                        <p class="mb-0"><b>SGST {{$invoice->dSGSTPerc}}%:</b> <span class="float-right">{{number_format($invoice->dSGST,2)}}/-</span></p>
-                        <p class="mb-0"><b>CGST {{$invoice->dCGSTPerc}}%:</b> <span class="float-right">{{number_format($invoice->dCGST,2)}}/-</span></p>
+                        @if($invoice->tiIsOutOfState == "0")
+                            <p class="mb-0"><b>SGST {{$invoice->dSGSTPerc}}%:</b> <span class="float-right">{{number_format($invoice->dSGST,2)}}/-</span></p>
+                            <p class="mb-0"><b>CGST {{$invoice->dCGSTPerc}}%:</b> <span class="float-right">{{number_format($invoice->dCGST,2)}}/-</span></p>
+                        @else
+                            <p class="mb-0"><b>IGST {{$invoice->dIGSTPerc}}%:</b> <span class="float-right">{{number_format($invoice->dIGST,2)}}/-</span></p>
+                        @endif
                         <p class="mb-0"><b>Round Off:</b> <span class="float-right">{{number_format($invoice->dRoundOff,2)}}/-</span></p>
                         <h3 class="text-right">
                             <span class="float-left text-muted"> Total: </span>
